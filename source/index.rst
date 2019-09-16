@@ -14,8 +14,8 @@ Main page
    mme.rst
    ims.rst
    mbmsgw.rst
-
-
+   protocols.rst
+   timers.rst
 
 Indices and tables
 ==================
