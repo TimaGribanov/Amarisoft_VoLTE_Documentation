@@ -1,0 +1,676 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="ru" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="ru" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Таймеры 3GPP &mdash; Документация Amarisoft VoLTE Document 0</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script type="text/javascript" src="_static/translations.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/stsci.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Алфавитный указатель" href="genindex.html" />
+    <link rel="search" title="Поиск" href="search.html" />
+    <link rel="prev" title="Протоколы" href="protocols.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+            <a href="index.html" class="icon icon-home"> Amarisoft VoLTE Document
+            
+            <img src="_static/Protei_Logo_white.png" class="logo" />
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1
+              </div>
+            
+          
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+  
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="enb.html">enb.сfg</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mme.html">mme.cfg</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ims.html">ims.cfg</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mbmsgw.html">mbmsgw.cfg</a></li>
+<li class="toctree-l1"><a class="reference internal" href="protocols.html">Протоколы</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Таймеры 3GPP</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#eps-mobility-management-emm">Таймеры EPS mobility management (EMM)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#eps-service-management-esm">Таймеры EPS service management (ESM)</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Amarisoft VoLTE Document</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Таймеры 3GPP</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/timers.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="gpp">
+<h1><a class="toc-backref" href="#id27">Таймеры 3GPP</a><a class="headerlink" href="#gpp" title="Ссылка на этот заголовок">¶</a></h1>
+<div class="contents topic" id="id1">
+<p class="topic-title">Содержание</p>
+<ul class="simple">
+<li><a class="reference internal" href="#gpp" id="id27">Таймеры 3GPP</a><ul>
+<li><a class="reference internal" href="#eps-mobility-management-emm" id="id28">Таймеры EPS mobility management (EMM)</a></li>
+<li><a class="reference internal" href="#eps-service-management-esm" id="id29">Таймеры EPS service management (ESM)</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<p>Ниже представлена информация по таймерам, определённым спецификацией <a class="reference external" href="https://www.arib.or.jp/english/html/overview/doc/STD-T63v11_00/5_Appendix/Rel12/24/24301-c80.pdf">3GPP TS 24.301</a>.</p>
+<div class="section" id="eps-mobility-management-emm">
+<h2><a class="toc-backref" href="#id28">Таймеры EPS mobility management (EMM)</a><a class="headerlink" href="#eps-mobility-management-emm" title="Ссылка на этот заголовок">¶</a></h2>
+<table border="1" class="docutils" id="id23">
+<caption><span class="caption-text">Со стороны UE</span><a class="headerlink" href="#id23" title="Постоянная ссылка на таблицу">¶</a></caption>
+<colgroup>
+<col width="10%" />
+<col width="10%" />
+<col width="24%" />
+<col width="18%" />
+<col width="23%" />
+<col width="15%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Таймер</th>
+<th class="head">Значение</th>
+<th class="head">Состояние</th>
+<th class="head">Причина запуска</th>
+<th class="head">Нормальная остановка</th>
+<th class="head">По истечению</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>T3402</td>
+<td>По ум. —
+12 мин.
+<a class="footnote-reference" href="#id7" id="id2">[1]</a></td>
+<td><p class="first">EMM-DEREGISTERED</p>
+<p class="last">EMM-REGISTERED</p>
+</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>T3410</td>
+<td>15 сек.</td>
+<td>EMM-REGISTERED-
+INITIATED</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>T3411</td>
+<td>10 сек.</td>
+<td><p class="first">EMM-DEREGISTERED.
+ATTEMPTING-TO-ATTACH</p>
+<p>EMM-REGISTERED.
+ATTEMPTING-TO-UPDATE</p>
+<p class="last">EMM-REGISTERED.
+NORMAL-SERVICE</p>
+</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>T3412</td>
+<td>По ум. —
+54 мин.
+<a class="footnote-reference" href="#id8" id="id3">[2]</a>
+<a class="footnote-reference" href="#id9" id="id4">[3]</a></td>
+<td>EMM-REGISTERED</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>T3416</td>
+<td>30 сек.</td>
+<td><p class="first">EMM-REGISTERED-
+INITIATED</p>
+<p>EMM-REGISTERED</p>
+<p>EMM-DEREGISTERED-
+INITIATED</p>
+<p>EMM-TRACKING-AREA-
+UPDATING-INITIATED</p>
+<p class="last">EMM-SERVICE-REQUEST-
+INITIATED</p>
+</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>T3417</td>
+<td>5 сек.</td>
+<td>EMM-SERVICE-REQUEST-
+INITIATED</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>T3417ext</td>
+<td>10 сек.</td>
+<td>EMM-SERVICE-REQUEST-
+INITIATED</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>T3418</td>
+<td>20 сек.</td>
+<td><p class="first">EMM-REGISTERED-
+INITIATED</p>
+<p>EMM-REGISTERED</p>
+<p>EMM-TRACKING-AREA-
+UPDATING-INITIATED</p>
+<p>EMM-DEREGISTERED-
+INITIATED</p>
+<p class="last">EMM-SERVICE-REQUEST-
+INITIATED</p>
+</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>T3420</td>
+<td>15 сек.</td>
+<td><p class="first">EMM-REGISTERED-
+INITIATED</p>
+<p>EMM-REGISTERED</p>
+<p>EMM-DEREGISTERED-
+INITIATED</p>
+<p>EMM-TRACKING-AREA-
+UPDATING-INITIATED</p>
+<p class="last">EMM-SERVICE-REQUEST-
+INITIATED</p>
+</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>T3421</td>
+<td>15 сек.</td>
+<td><p class="first">EMM-DEREGISTERED-
+INITIATED</p>
+<p class="last">EMM- REGISTERED.IMSI-
+DETACH-INITIATED</p>
+</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>T3423</td>
+<td>По ум. —
+54 мин.
+<a class="footnote-reference" href="#id10" id="id5">[4]</a></td>
+<td>EMM-REGISTERED</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>T3430</td>
+<td>15 сек.</td>
+<td>EMM-TRACKING-AREA-
+UPDATING-INITIATED</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>T3440</td>
+<td>10 сек.</td>
+<td><p class="first">EMM-REGISTERED-
+INITIATED</p>
+<p>EMM-TRACKING-AREA-
+UPDATING-INITIATED</p>
+<p>EMM-DEREGISTERED-
+INITIATED</p>
+<p>EMM-SERVICE-REQUEST-
+INITIATED</p>
+<p>EMM-REGISTERED</p>
+<p>EMM-DEREGISTERED</p>
+<p class="last">EMM-DEREGISTERED.
+NORMAL-SERVICE</p>
+</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>T3442</td>
+<td><a class="footnote-reference" href="#id11" id="id6">[5]</a></td>
+<td>EMM-REGISTERED</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id7" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id2">[1]</a></td><td>Случаи, когда значение таймера пользовательское указаны в п. 5.3.6 спецификации <a class="reference external" href="https://www.arib.or.jp/english/html/overview/doc/STD-T63v11_00/5_Appendix/Rel12/24/24301-c80.pdf">3GPP TS 24.301</a>.</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id8" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id3">[2]</a></td><td>Значение этого таймера предоставляется оператором связи во время процедур attach и tracking area update.</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id9" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id4">[3]</a></td><td>Значение по умолчанию этого таймера используется, если сеть не определяет значение в сообщении TRACKING AREA UPDATE ACCEPT и оно не сохранено в UE.</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id10" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id5">[4]</a></td><td>Значение этого таймера может быть предоставлено сетью в сообщении ATTACH ACCEPT и сообщении TRACKING AREA UPDATE ACCEPT.</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id11" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id6">[5]</a></td><td>Значение этого таймера предоставляется сетью, когда сетью отбрасывается запрос сервиса для CSFB с EMM-причиной #39 «CS service temporarily not available».</td></tr>
+</tbody>
+</table>
+<table border="1" class="docutils" id="id24">
+<caption><span class="caption-text">Со стороны сети</span><a class="headerlink" href="#id24" title="Постоянная ссылка на таблицу">¶</a></caption>
+<colgroup>
+<col width="11%" />
+<col width="10%" />
+<col width="24%" />
+<col width="18%" />
+<col width="23%" />
+<col width="14%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Таймер</th>
+<th class="head">Значение</th>
+<th class="head">Состояние</th>
+<th class="head">Причина запуска</th>
+<th class="head">Нормальная остановка</th>
+<th class="head">По истечению</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>T3413</td>
+<td><a class="footnote-reference" href="#id15" id="id12">[6]</a></td>
+<td>EMM-REGISTERED</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>T3422</td>
+<td>6 сек.</td>
+<td>EMM-DEREGISTERED-</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>&#160;</td>
+<td>&#160;</td>
+<td>INITIATED</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>T3450</td>
+<td>6 сек.</td>
+<td>EMM-COMMON-PROC-INIT</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>T3460</td>
+<td>6 сек.</td>
+<td>EMM-COMMON-PROC-INIT</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>T3470</td>
+<td>6 сек.</td>
+<td>EMM-COMMON-PROC-INIT</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>Mobile
+reachable</td>
+<td><a class="footnote-reference" href="#id16" id="id13">[7]</a></td>
+<td>Все, кроме
+EMM-DEREGISTERED</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>Implicit
+detach
+timer</td>
+<td><a class="footnote-reference" href="#id17" id="id14">[8]</a></td>
+<td>Все, кроме
+EMM-DEREGISTERED</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id15" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id12">[6]</a></td><td>Значение таймера зависит от сети.</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id16" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id13">[7]</a></td><td>Значение таймера по умолчанию на 4 минуты больше, чем у T3412. Если T3346 больше, чем T3412, и MME включает таймер T3346 в сообщение  TRACKING AREA UPDATE REJECT или сообщение SERVICE REJECT, то значения таймера доступности устройства (mobile reachable) и таймера скрытого разъединения (implicit detach) установлены так, чтобы сумма их значений была больше, чем T3346. Если UE присоединено для экстренных сервисов, значение таймера выставляется равным T3412. Если сеть включает значение для таймера T3224 в сообщение ATTACH ACCEPT или сообщение TRACKING AREA UPDATE ACCEPT и UE не присоединено для экстренных сервисов и не имеет соединения с PDN для экстренных сервисов, то значение таймера равно значению таймера T3324.</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id17" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id14">[8]</a></td><td>Значение таймера зависит от сети. Если активировано ISR, значение по умолчанию больше значения T3423 на 4 минуты. Если MME включает таймер T3324 в сообщение ATTACH ACCEPT или сообщение TRACKING AREA UPDATE ACCEPT и UE не присоединено для экстренных сервисов и не имеет соединения с PDN для экстренных сервисов, то значение таймера должно быть на 4 минуты больше значения T3412.</td></tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="eps-service-management-esm">
+<h2><a class="toc-backref" href="#id29">Таймеры EPS service management (ESM)</a><a class="headerlink" href="#eps-service-management-esm" title="Ссылка на этот заголовок">¶</a></h2>
+<table border="1" class="docutils" id="id25">
+<caption><span class="caption-text">Со стороны UE</span><a class="headerlink" href="#id25" title="Постоянная ссылка на таблицу">¶</a></caption>
+<colgroup>
+<col width="10%" />
+<col width="10%" />
+<col width="24%" />
+<col width="18%" />
+<col width="23%" />
+<col width="15%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Таймер</th>
+<th class="head">Значение</th>
+<th class="head">Состояние</th>
+<th class="head">Причина запуска</th>
+<th class="head">Нормальная остановка</th>
+<th class="head">По первому,
+второму,
+третьему,
+четвёртому
+истечению
+<a class="footnote-reference" href="#id20" id="id18">[9]</a></th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>T3480</td>
+<td>8 сек.</td>
+<td>PROCEDURE TRANSACTION
+PENDING</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>T3481</td>
+<td>8 сек.</td>
+<td>PROCEDURE TRANSACTION
+PENDING</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>T3482</td>
+<td>8 сек.</td>
+<td>PROCEDURE TRANSACTION
+PENDING</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>T3492</td>
+<td>6 сек.</td>
+<td>PROCEDURE TRANSACTION
+PENDING</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>Back-off
+timer
+<a class="footnote-reference" href="#id21" id="id19">[10]</a></td>
+<td colspan="5">Определён в <a class="reference external" href="https://www.etsi.org/deliver/etsi_ts/124000_124099/124008/13.07.00_60/ts_124008v130700p.pdf">3GPP TS 24.008</a></td>
+</tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id20" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[9]</td><td><em>(<a class="fn-backref" href="#id18">1</a>, <a class="fn-backref" href="#id22">2</a>)</em> Обычно процедуры прерываются на пятом истечении определённого таймера. Исключения описаны в описаниях соответсвующих процедур.</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id21" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id19">[10]</a></td><td>Back-off timer используется для описания логической модели требуемого поведения UE. Эта модель не предполагает конкретной имплементации.</td></tr>
+</tbody>
+</table>
+<table border="1" class="docutils" id="id26">
+<caption><span class="caption-text">Со стороны сети</span><a class="headerlink" href="#id26" title="Постоянная ссылка на таблицу">¶</a></caption>
+<colgroup>
+<col width="10%" />
+<col width="10%" />
+<col width="24%" />
+<col width="18%" />
+<col width="23%" />
+<col width="15%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Таймер</th>
+<th class="head">Значение</th>
+<th class="head">Состояние</th>
+<th class="head">Причина запуска</th>
+<th class="head">Нормальная остановка</th>
+<th class="head">По первому,
+второму,
+третьему,
+четвёртому
+истечению
+<a class="footnote-reference" href="#id20" id="id22">[9]</a></th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>T3485</td>
+<td>8 сек.</td>
+<td>BEARER CONTEXT ACTIVE
+PENDING</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>T3486</td>
+<td>8 сек.</td>
+<td>BEARER CONTEXT MODIFY
+PENDING</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>T3489</td>
+<td>4 сек.</td>
+<td>PROCEDURE TRANSACTION
+PENDING</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>T3495</td>
+<td>8 сек.</td>
+<td>BEARER CONTEXT
+INACTIVE PENDING</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="protocols.html" class="btn btn-neutral float-left" title="Протоколы" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Timofey Gribanov
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

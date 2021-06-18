@@ -1,0 +1,421 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="ru" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="ru" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>enb.сfg &mdash; Документация Amarisoft VoLTE Document 0</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script type="text/javascript" src="_static/translations.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/stsci.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Алфавитный указатель" href="genindex.html" />
+    <link rel="search" title="Поиск" href="search.html" />
+    <link rel="next" title="mme.cfg" href="mme.html" />
+    <link rel="prev" title="Main page" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+            <a href="index.html" class="icon icon-home"> Amarisoft VoLTE Document
+            
+            <img src="_static/Protei_Logo_white.png" class="logo" />
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1
+              </div>
+            
+          
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+  
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">enb.сfg</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id2">Параметры конфига</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id3">Синтаксис конфигов</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">Общие параметры</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#enb">Параметры eNB</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">Расширенные параметры</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">Настройки радиодрайвера</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">Настройки соты</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#drb">Настройки DRB</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mbms">Настройки MBMS</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id8">Элементы</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id9">Интерфейсы</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#lte-uu-ue-enb">LTE-Uu (UE — eNB)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#x2-enb-enb">X2 (eNB — eNB)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#s1-mme-enb-mme">S1-MME (eNB — MME)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#s1-u-enb-s-gw">S1-U (eNB — S-GW)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="mme.html">mme.cfg</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ims.html">ims.cfg</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mbmsgw.html">mbmsgw.cfg</a></li>
+<li class="toctree-l1"><a class="reference internal" href="protocols.html">Протоколы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="timers.html">Таймеры 3GPP</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Amarisoft VoLTE Document</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>enb.сfg</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/enb.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="enb-fg">
+<h1><a class="toc-backref" href="#id14">enb.сfg</a><a class="headerlink" href="#enb-fg" title="Ссылка на этот заголовок">¶</a></h1>
+<div class="contents topic" id="id1">
+<p class="topic-title">Содержание</p>
+<ul class="simple">
+<li><a class="reference internal" href="#enb-fg" id="id14">enb.сfg</a><ul>
+<li><a class="reference internal" href="#id2" id="id15">Параметры конфига</a><ul>
+<li><a class="reference internal" href="#id3" id="id16">Синтаксис конфигов</a></li>
+<li><a class="reference internal" href="#id4" id="id17">Общие параметры</a></li>
+<li><a class="reference internal" href="#enb" id="id18">Параметры eNB</a></li>
+<li><a class="reference internal" href="#id5" id="id19">Расширенные параметры</a></li>
+<li><a class="reference internal" href="#id6" id="id20">Настройки радиодрайвера</a></li>
+<li><a class="reference internal" href="#id7" id="id21">Настройки соты</a></li>
+<li><a class="reference internal" href="#drb" id="id22">Настройки DRB</a></li>
+<li><a class="reference internal" href="#mbms" id="id23">Настройки MBMS</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id8" id="id24">Элементы</a></li>
+<li><a class="reference internal" href="#id9" id="id25">Интерфейсы</a><ul>
+<li><a class="reference internal" href="#lte-uu-ue-enb" id="id26">LTE-Uu (UE — eNB)</a></li>
+<li><a class="reference internal" href="#x2-enb-enb" id="id27">X2 (eNB — eNB)</a></li>
+<li><a class="reference internal" href="#s1-mme-enb-mme" id="id28">S1-MME (eNB — MME)</a></li>
+<li><a class="reference internal" href="#s1-u-enb-s-gw" id="id29">S1-U (eNB — S-GW)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="id2">
+<h2><a class="toc-backref" href="#id15">Параметры конфига</a><a class="headerlink" href="#id2" title="Ссылка на этот заголовок">¶</a></h2>
+<div class="section" id="id3">
+<h3><a class="toc-backref" href="#id16">Синтаксис конфигов</a><a class="headerlink" href="#id3" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Оформление конфигурационных файлов схоже по структуре с JSON.</p>
+<ol class="arabic">
+<li><p class="first">Поддерживаемые типы данных:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Числа (64-битные с плавающей точкой): <cite>13.4</cite>;</li>
+<li>Комплексные числа: <cite>1.2+3*I</cite>;</li>
+<li>Строки: <cite>«string»</cite>;</li>
+<li>Булеаны: <cite>true</cite> или <cite>false</cite>;</li>
+<li>Объекты: <cite>{ field1: value1, field2: vaue2, … }</cite>;</li>
+<li>Массивы: <cite>[ value1, value2, … ]</cite>;</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">Базовые операции +, -, * и / поддерживаются с числами и комплексными числами. + также соединяет строки. Также поддерживаются операторы !, ||, &amp;&amp;, ==, !=, &lt;, &lt;=, &gt;=, &gt;.</p>
+</li>
+<li><p class="first">Числа 0 и 1 поддерживаются как синонимы <cite>false</cite> и <cite>true</cite>.</p>
+</li>
+<li><p class="first">{} на верхнем уровне опциональны.</p>
+</li>
+<li><p class="first">” для имён значений опционально.</p>
+</li>
+<li><p class="first">Значения могут быть продублированы. Перезапись будет проихводится соответственно порядку чтения файла.</p>
+<blockquote>
+<div><div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nx">value</span><span class="o">:</span> <span class="s2">&quot;foo&quot;</span><span class="p">,</span>
+    <span class="nx">value</span><span class="o">:</span> <span class="s2">&quot;bar&quot;</span><span class="p">,</span>
+    <span class="nx">sub</span><span class="o">:</span> <span class="p">{</span>
+        <span class="nx">value</span><span class="o">:</span> <span class="s2">&quot;foo&quot;</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="nx">sub</span><span class="o">:</span> <span class="p">{</span>
+        <span class="nx">value</span><span class="o">:</span> <span class="s2">&quot;bar&quot;</span><span class="p">,</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Равнозначно</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nx">value</span><span class="o">:</span> <span class="s2">&quot;bar&quot;</span><span class="p">,</span>
+    <span class="nx">sub</span><span class="o">:</span> <span class="p">{</span>
+        <span class="nx">value</span><span class="o">:</span> <span class="s2">&quot;bar&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><dl class="first docutils">
+<dt>Возможно добавление файлов командой <cite>include</cite>. Массивы добавлять нельзя.</dt>
+<dd><p class="first">Если файл <em>file1.cfg</em> выглядит так:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">value</span><span class="o">:</span> <span class="s2">&quot;foo&quot;</span><span class="p">,</span>
+<span class="nx">include</span> <span class="s2">&quot;file2.cfg&quot;</span><span class="p">,</span>
+<span class="nx">foo</span><span class="o">:</span> <span class="s2">&quot;foo&quot;</span>
+</pre></div>
+</div>
+<p>А файл <em>file2.cfg</em> так:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">value</span><span class="o">:</span> <span class="s2">&quot;bar&quot;</span><span class="p">,</span>
+<span class="nx">foo</span><span class="o">:</span> <span class="s2">&quot;bar&quot;</span>
+</pre></div>
+</div>
+<p>То конечные параметры будут:</p>
+<div class="last highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nx">value</span><span class="o">:</span> <span class="s2">&quot;bar&quot;</span><span class="p">,</span>
+    <span class="nx">foo</span><span class="o">:</span> <span class="s2">&quot;foo&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+<div class="section" id="id4">
+<h3><a class="toc-backref" href="#id17">Общие параметры</a><a class="headerlink" href="#id4" title="Ссылка на этот заголовок">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="34%" />
+<col width="66%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Параметр</th>
+<th class="head">Описание</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>log_filename</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>log_options</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="enb">
+<h3><a class="toc-backref" href="#id18">Параметры eNB</a><a class="headerlink" href="#enb" title="Ссылка на этот заголовок">¶</a></h3>
+</div>
+<div class="section" id="id5">
+<h3><a class="toc-backref" href="#id19">Расширенные параметры</a><a class="headerlink" href="#id5" title="Ссылка на этот заголовок">¶</a></h3>
+</div>
+<div class="section" id="id6">
+<h3><a class="toc-backref" href="#id20">Настройки радиодрайвера</a><a class="headerlink" href="#id6" title="Ссылка на этот заголовок">¶</a></h3>
+</div>
+<div class="section" id="id7">
+<h3><a class="toc-backref" href="#id21">Настройки соты</a><a class="headerlink" href="#id7" title="Ссылка на этот заголовок">¶</a></h3>
+</div>
+<div class="section" id="drb">
+<h3><a class="toc-backref" href="#id22">Настройки DRB</a><a class="headerlink" href="#drb" title="Ссылка на этот заголовок">¶</a></h3>
+</div>
+<div class="section" id="mbms">
+<h3><a class="toc-backref" href="#id23">Настройки MBMS</a><a class="headerlink" href="#mbms" title="Ссылка на этот заголовок">¶</a></h3>
+</div>
+</div>
+<div class="section" id="id8">
+<h2><a class="toc-backref" href="#id24">Элементы</a><a class="headerlink" href="#id8" title="Ссылка на этот заголовок">¶</a></h2>
+<p>eNB взаимодействует со следующими элементами:</p>
+<ul class="simple">
+<li>UE</li>
+<li>MME</li>
+<li>S-GW</li>
+</ul>
+</div>
+<div class="section" id="id9">
+<h2><a class="toc-backref" href="#id25">Интерфейсы</a><a class="headerlink" href="#id9" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Про протоколы, используемые в интерфейсах, подробнее на странице «Протоколы».</p>
+<p>eNB имеет следующие интерфейсы:</p>
+<div class="section" id="lte-uu-ue-enb">
+<h3><a class="toc-backref" href="#id26">LTE-Uu (UE — eNB)</a><a class="headerlink" href="#lte-uu-ue-enb" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Для передачи информации по этому интерфейсу используется протокол PDCP.</p>
+<div class="figure align-center" id="id10">
+<a class="reference internal image-reference" href="_images/Uu.jpg"><img alt="LTE-Uu" src="_images/Uu.jpg" style="width: 373.0px; height: 225.0px;" /></a>
+<p class="caption"><span class="caption-text">Стек протоколов интерфейса LTE-Uu</span></p>
+</div>
+</div>
+<div class="section" id="x2-enb-enb">
+<h3><a class="toc-backref" href="#id27">X2 (eNB — eNB)</a><a class="headerlink" href="#x2-enb-enb" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Для передачи информации по этому интерфейсу используется протокол X2-AP.</p>
+<div class="figure align-center" id="id11">
+<a class="reference internal image-reference" href="_images/X2.jpg"><img alt="X2" src="_images/X2.jpg" style="width: 514.0px; height: 316.0px;" /></a>
+<p class="caption"><span class="caption-text">Стек протоколов интерфейса X2</span></p>
+</div>
+</div>
+<div class="section" id="s1-mme-enb-mme">
+<h3><a class="toc-backref" href="#id28">S1-MME (eNB — MME)</a><a class="headerlink" href="#s1-mme-enb-mme" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Для передачи информации по этому интерфейсу используется протокол S1-AP.</p>
+<div class="figure align-center" id="id12">
+<a class="reference internal image-reference" href="_images/S1-MME.png"><img alt="S1-MME" src="_images/S1-MME.png" style="width: 405.0px; height: 253.0px;" /></a>
+<p class="caption"><span class="caption-text">Стек протоколов интерфейса S1-MME</span></p>
+</div>
+</div>
+<div class="section" id="s1-u-enb-s-gw">
+<h3><a class="toc-backref" href="#id29">S1-U (eNB — S-GW)</a><a class="headerlink" href="#s1-u-enb-s-gw" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Для передачи информации по этому интерфейсу используется протокол GTPv1-U.</p>
+<div class="figure align-center" id="id13">
+<a class="reference internal image-reference" href="_images/S1-U.jpg"><img alt="S1-U" src="_images/S1-U.jpg" style="width: 321.0px; height: 411.0px;" /></a>
+<p class="caption"><span class="caption-text">Стек протоколов интерфейса S1-U</span></p>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="mme.html" class="btn btn-neutral float-right" title="mme.cfg" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral float-left" title="Main page" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Timofey Gribanov
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

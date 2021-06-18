@@ -1,0 +1,1494 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="ru" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="ru" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>mme.cfg &mdash; Документация Amarisoft VoLTE Document 0</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script type="text/javascript" src="_static/translations.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/stsci.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Алфавитный указатель" href="genindex.html" />
+    <link rel="search" title="Поиск" href="search.html" />
+    <link rel="next" title="ims.cfg" href="ims.html" />
+    <link rel="prev" title="enb.сfg" href="enb.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+            <a href="index.html" class="icon icon-home"> Amarisoft VoLTE Document
+            
+            <img src="_static/Protei_Logo_white.png" class="logo" />
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1
+              </div>
+            
+          
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+  
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="enb.html">enb.сfg</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">mme.cfg</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id2">Параметры конфига</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id3">Синтаксис конфигов</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">Общие параметры</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mme">Параметры MME</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nas-testing-mme">Параметры NAS Testing (часть MME)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#s6a-mme-hss">Параметры S6a (интерфейс между MME и HSS)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sgs-mme-msc-sgsn">Параметры SGs (интерфейс между MME и MSC/SGSN)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#s-gw-p-gw">Параметры S-GW/P-GW</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pcrf-rx">Параметры PCRF (интерфейс Rx)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#hss">Параметры HSS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#eir-s13">Параметры EIR (S13)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#etws-cmas">Параметры ETWS/CMAS</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#ltemme">Удалённое управление программой ltemme</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#edrf-psm">Функции управления параметрами eDRF и PSM</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#new-radio-nr">Относящиеся к New Radio (NR)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cellular-iot-ciot">Относящиеся к Cellular IoT (CIoT)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#pdn-apn">Управление доступом к PDN и APN</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id5">Разрешение/запрет доступа</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ip">Управление IP-адресацией</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">Управление аутентификацией</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#qos">Управление QOS</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id7">Элементы</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#lte">Из LTE</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id8">Не из LTE</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id9">Интерфейсы</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#ue-mme">UE — MME</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#s1-mme-enb-mme">S1-MME (eNB — MME)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#s11-s-gw-mme">S11 (S-GW — MME)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sgs-msc-server-vlr-mme">SGs (MSC-Server/VLR — MME)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#s6a-hss-mme">S6a (HSS — MME)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#amarisoft">Таймеры, используемые в amarisoft</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id10">Идентификаторы</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ims.html">ims.cfg</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mbmsgw.html">mbmsgw.cfg</a></li>
+<li class="toctree-l1"><a class="reference internal" href="protocols.html">Протоколы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="timers.html">Таймеры 3GPP</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Amarisoft VoLTE Document</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>mme.cfg</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/mme.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="mme-cfg">
+<h1><a class="toc-backref" href="#id16">mme.cfg</a><a class="headerlink" href="#mme-cfg" title="Ссылка на этот заголовок">¶</a></h1>
+<div class="contents topic" id="id1">
+<p class="topic-title">Содержание</p>
+<ul class="simple">
+<li><a class="reference internal" href="#mme-cfg" id="id16">mme.cfg</a><ul>
+<li><a class="reference internal" href="#id2" id="id17">Параметры конфига</a><ul>
+<li><a class="reference internal" href="#id3" id="id18">Синтаксис конфигов</a></li>
+<li><a class="reference internal" href="#id4" id="id19">Общие параметры</a></li>
+<li><a class="reference internal" href="#mme" id="id20">Параметры MME</a></li>
+<li><a class="reference internal" href="#nas-testing-mme" id="id21">Параметры NAS Testing (часть MME)</a></li>
+<li><a class="reference internal" href="#s6a-mme-hss" id="id22">Параметры S6a (интерфейс между MME и HSS)</a></li>
+<li><a class="reference internal" href="#sgs-mme-msc-sgsn" id="id23">Параметры SGs (интерфейс между MME и MSC/SGSN)</a></li>
+<li><a class="reference internal" href="#s-gw-p-gw" id="id24">Параметры S-GW/P-GW</a></li>
+<li><a class="reference internal" href="#pcrf-rx" id="id25">Параметры PCRF (интерфейс Rx)</a></li>
+<li><a class="reference internal" href="#hss" id="id26">Параметры HSS</a></li>
+<li><a class="reference internal" href="#eir-s13" id="id27">Параметры EIR (S13)</a></li>
+<li><a class="reference internal" href="#etws-cmas" id="id28">Параметры ETWS/CMAS</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#ltemme" id="id29">Удалённое управление программой ltemme</a></li>
+<li><a class="reference internal" href="#edrf-psm" id="id30">Функции управления параметрами eDRF и PSM</a><ul>
+<li><a class="reference internal" href="#new-radio-nr" id="id31">Относящиеся к New Radio (NR)</a></li>
+<li><a class="reference internal" href="#cellular-iot-ciot" id="id32">Относящиеся к Cellular IoT (CIoT)</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#pdn-apn" id="id33">Управление доступом к PDN и APN</a><ul>
+<li><a class="reference internal" href="#id5" id="id34">Разрешение/запрет доступа</a></li>
+<li><a class="reference internal" href="#ip" id="id35">Управление IP-адресацией</a></li>
+<li><a class="reference internal" href="#id6" id="id36">Управление аутентификацией</a></li>
+<li><a class="reference internal" href="#qos" id="id37">Управление QOS</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id7" id="id38">Элементы</a><ul>
+<li><a class="reference internal" href="#lte" id="id39">Из LTE</a></li>
+<li><a class="reference internal" href="#id8" id="id40">Не из LTE</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id9" id="id41">Интерфейсы</a><ul>
+<li><a class="reference internal" href="#ue-mme" id="id42">UE — MME</a></li>
+<li><a class="reference internal" href="#s1-mme-enb-mme" id="id43">S1-MME (eNB — MME)</a></li>
+<li><a class="reference internal" href="#s11-s-gw-mme" id="id44">S11 (S-GW — MME)</a></li>
+<li><a class="reference internal" href="#sgs-msc-server-vlr-mme" id="id45">SGs (MSC-Server/VLR — MME)</a></li>
+<li><a class="reference internal" href="#s6a-hss-mme" id="id46">S6a (HSS — MME)</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#amarisoft" id="id47">Таймеры, используемые в amarisoft</a></li>
+<li><a class="reference internal" href="#id10" id="id48">Идентификаторы</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="id2">
+<h2><a class="toc-backref" href="#id17">Параметры конфига</a><a class="headerlink" href="#id2" title="Ссылка на этот заголовок">¶</a></h2>
+<div class="section" id="id3">
+<h3><a class="toc-backref" href="#id18">Синтаксис конфигов</a><a class="headerlink" href="#id3" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Оформление конфигурационных файлов схоже по структуре с JSON.</p>
+<ol class="arabic">
+<li><p class="first">Поддерживаемые типы данных:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Числа (64-битные с плавающей точкой): <cite>13.4</cite>;</li>
+<li>Комплексные числа: <cite>1.2+3*I</cite>;</li>
+<li>Строки: <cite>«string»</cite>;</li>
+<li>Булеаны: <cite>true</cite> или <cite>false</cite>;</li>
+<li>Объекты: <cite>{ field1: value1, field2: vaue2, … }</cite>;</li>
+<li>Массивы: <cite>[ value1, value2, … ]</cite>;</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">Базовые операции +, -, * и / поддерживаются с числами и комплексными числами. + также соединяет строки. Также поддерживаются операторы !, ||, &amp;&amp;, ==, !=, &lt;, &lt;=, &gt;=, &gt;.</p>
+</li>
+<li><p class="first">Числа 0 и 1 поддерживаются как синонимы <cite>false</cite> и <cite>true</cite>.</p>
+</li>
+<li><p class="first">{} на верхнем уровне опциональны.</p>
+</li>
+<li><p class="first">” для имён значений опционально.</p>
+</li>
+<li><p class="first">Значения могут быть продублированы. Перезапись будет проихводится соответственно порядку чтения файла.</p>
+<blockquote>
+<div><div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nx">value</span><span class="o">:</span> <span class="s2">&quot;foo&quot;</span><span class="p">,</span>
+    <span class="nx">value</span><span class="o">:</span> <span class="s2">&quot;bar&quot;</span><span class="p">,</span>
+    <span class="nx">sub</span><span class="o">:</span> <span class="p">{</span>
+        <span class="nx">value</span><span class="o">:</span> <span class="s2">&quot;foo&quot;</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="nx">sub</span><span class="o">:</span> <span class="p">{</span>
+        <span class="nx">value</span><span class="o">:</span> <span class="s2">&quot;bar&quot;</span><span class="p">,</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Равнозначно</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nx">value</span><span class="o">:</span> <span class="s2">&quot;bar&quot;</span><span class="p">,</span>
+    <span class="nx">sub</span><span class="o">:</span> <span class="p">{</span>
+        <span class="nx">value</span><span class="o">:</span> <span class="s2">&quot;bar&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><dl class="first docutils">
+<dt>Возможно добавление файлов командой <cite>include</cite>. Массивы добавлять нельзя.</dt>
+<dd><p class="first">Если файл <em>file1.cfg</em> выглядит так:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">value</span><span class="o">:</span> <span class="s2">&quot;foo&quot;</span><span class="p">,</span>
+<span class="nx">include</span> <span class="s2">&quot;file2.cfg&quot;</span><span class="p">,</span>
+<span class="nx">foo</span><span class="o">:</span> <span class="s2">&quot;foo&quot;</span>
+</pre></div>
+</div>
+<p>А файл <em>file2.cfg</em> так:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">value</span><span class="o">:</span> <span class="s2">&quot;bar&quot;</span><span class="p">,</span>
+<span class="nx">foo</span><span class="o">:</span> <span class="s2">&quot;bar&quot;</span>
+</pre></div>
+</div>
+<p>То конечные параметры будут:</p>
+<div class="last highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nx">value</span><span class="o">:</span> <span class="s2">&quot;bar&quot;</span><span class="p">,</span>
+    <span class="nx">foo</span><span class="o">:</span> <span class="s2">&quot;foo&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+<div class="section" id="id4">
+<h3><a class="toc-backref" href="#id19">Общие параметры</a><a class="headerlink" href="#id4" title="Ссылка на этот заголовок">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="34%" />
+<col width="66%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Параметр</th>
+<th class="head">Описание</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>log_filename</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>log_options</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="mme">
+<h3><a class="toc-backref" href="#id20">Параметры MME</a><a class="headerlink" href="#mme" title="Ссылка на этот заголовок">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="26%" />
+<col width="15%" />
+<col width="59%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head" colspan="2">Параметр</th>
+<th class="head">Описание</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td colspan="2">gtp_addr</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td colspan="2">gtp_ext_addr</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td colspan="2">gtp_payload_mtu</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td colspan="2">s1ap_bind_addr</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td colspan="2">plmn</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td colspan="2">mme_group_id</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td colspan="2">mme_code</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td colspan="2">relative_capacity</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td colspan="2">nas_cipher_algo_pref</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td colspan="2">nas_integ_algo_pref</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td colspan="2">tun_setup_script</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td colspan="2">ue_to_ue_forwarding</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td colspan="2">t3402</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td colspan="2">t3412</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td colspan="2">t3412_low_priority</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td colspan="2">psm</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td colspan="2">t3412_extended_forced</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td colspan="2">force_t3412_extended_ie</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td colspan="2">r3324_forced</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td colspan="2">t3346</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td colspan="2">t3448</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td colspan="2">t3460</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td colspan="2">t3460_wb_s1_ce</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td colspan="2">edrx</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td colspan="2">edrx_ptw_wb_s1</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td colspan="2">edrx_ptw_nb_s1</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td colspan="2">edrx_cycle_forced</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td rowspan="2">ims_list</td>
+<td>ims_addr</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>bind_addr</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td colspan="2">ims_vops</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td rowspan="2">emergency_number_list</td>
+<td>category</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>digits</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td colspan="2">cp_ciot_opt</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td colspan="2">attach_without_pdn</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td colspan="2">network_name</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td colspan="2">network_short_name</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td colspan="2">emm_information_time_enable</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td colspan="2">emm_information_enable</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td colspan="2">attach_reject_error</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td colspan="2">tracking_area_update_reject_error</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td colspan="2">service_reject_error</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td colspan="2">pdn_connect_reject_error</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td colspan="2">pdn_disconnect_reject_error</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td colspan="2">bearer_resource_allocation
+_reject_error</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td colspan="2">bearer_resource_modification
+_reject_error</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td colspan="2">force_eps_only</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td colspan="2">attach_result_mode</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td colspan="2">additional_update_result</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td colspan="2">imeisv_request_in_smc</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td colspan="2">force_nas_authentication</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td colspan="2">authentication_mode</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td colspan="2">skip_smc_proc</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td colspan="2">force_guti_in_tau</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td colspan="2">attach_reject_filter</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td colspan="2">emm_procedure_filter</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td rowspan="2">qci_dscp_mapping</td>
+<td>qci</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>dscp</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td colspan="2">nr_support</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td colspan="2">com_addr</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td colspan="2">com_name</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td colspan="2">com_ssl_sertificate</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td colspan="2">com_ssl_key</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td colspan="2">com_ssl_peer_verify</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td rowspan="3">license_server</td>
+<td>server_addr</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>name</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>tag</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="nas-testing-mme">
+<h3><a class="toc-backref" href="#id21">Параметры NAS Testing (часть MME)</a><a class="headerlink" href="#nas-testing-mme" title="Ссылка на этот заголовок">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="23%" />
+<col width="18%" />
+<col width="21%" />
+<col width="38%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head" colspan="3">Параметр</th>
+<th class="head">Описание</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td rowspan="7">nas_test_procedure</td>
+<td colspan="2">test_loop_mode</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td rowspan="2">lb_setup_list</td>
+<td>ul_pdcp_sdu_size</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>drb_id</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td colspan="2">ip_pdu_delay</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td colspan="2">operation_mode</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td colspan="2">repetitions</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td colspan="2">ul_data_delay</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="s6a-mme-hss">
+<h3><a class="toc-backref" href="#id22">Параметры S6a (интерфейс между MME и HSS)</a><a class="headerlink" href="#s6a-mme-hss" title="Ссылка на этот заголовок">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="5%" />
+<col width="29%" />
+<col width="66%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head" colspan="2">Параметр</th>
+<th class="head">Описание</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td rowspan="6">s6</td>
+<td>server_addr</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>bind_addr</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>origin_realm</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>origin_host</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>transaction_timeout</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>watchdog_duration</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="sgs-mme-msc-sgsn">
+<h3><a class="toc-backref" href="#id23">Параметры SGs (интерфейс между MME и MSC/SGSN)</a><a class="headerlink" href="#sgs-mme-msc-sgsn" title="Ссылка на этот заголовок">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="7%" />
+<col width="27%" />
+<col width="66%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head" colspan="2">Параметр</th>
+<th class="head">Описание</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td rowspan="4">sgs</td>
+<td colspan="2">csfb_allowed</td>
+</tr>
+<tr class="row-odd"><td colspan="2">lac</td>
+</tr>
+<tr class="row-even"><td colspan="2">server_addr</td>
+</tr>
+<tr class="row-odd"><td colspan="2">bind_addr</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="s-gw-p-gw">
+<h3><a class="toc-backref" href="#id24">Параметры S-GW/P-GW</a><a class="headerlink" href="#s-gw-p-gw" title="Ссылка на этот заголовок">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="7%" />
+<col width="19%" />
+<col width="10%" />
+<col width="9%" />
+<col width="19%" />
+<col width="36%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head" colspan="5">Параметр</th>
+<th class="head">Описание</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td colspan="5">ignore_initial_apn</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td rowspan="77">pdn_list</td>
+<td colspan="4">access_point_name</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td colspan="4">pdn_type</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td colspan="4">first_ip_addr</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td colspan="4">last_ip_addr</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td colspan="4">ipv4_auto_increment</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td colspan="4">gateway</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td colspan="4">ip_addr_shift</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td colspan="4">first_ipv6_prefix</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td colspan="4">last_ipv6_prefix</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td colspan="4">ipv6_auto_increment</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td colspan="4">ipv6_interface_identifier</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td colspan="4">ipv6_router_lifetime</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td colspan="4">ipv6_valid_lifetime</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td colspan="4">ipv6_pref_lifetime</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td colspan="4">ipv6_onlink_flag</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td colspan="4">ipv6_managed_addr_config_flag</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td colspan="4">ipv6_other_config_flag</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td colspan="4">ipv6_mtu</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td colspan="4">ipv6_ra_transmission_interval</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td colspan="4">ipv6_drop_rs</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td colspan="4">ipv6_prefix_delegation_count</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td colspan="4">dns_addr</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td colspan="4">p_cscf_addr</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td colspan="4">mtu_ipv4</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td colspan="4">mtu_non_ip</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td rowspan="4">operator</td>
+<td>id</td>
+<td colspan="2">&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>plmn</td>
+<td colspan="2">&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>value</td>
+<td colspan="2">&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>force</td>
+<td colspan="2">&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td colspan="4">authentication</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td colspan="4">username</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td colspan="4">password</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td colspan="4">apn_aggregate_max_bitrate_dl</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td colspan="4">apn_aggregate_max_bitrate_ul</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td colspan="4">emergency</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td colspan="4">serving_plmn_rate_control</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td rowspan="3">apn_rate_control_params</td>
+<td>additional
+_exception
+_report</td>
+<td colspan="2">&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>ul_time_unit</td>
+<td colspan="2">&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>max_ul_rate</td>
+<td colspan="2">&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td rowspan="2">additional_apn_rate
+_control_exception_data
+_params</td>
+<td>ul_time_unit</td>
+<td colspan="2">&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>max_ul_rate</td>
+<td colspan="2">&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td colspan="4">t3396</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td colspan="4">re_attempt_ind</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td colspan="4">esm_procedure_filter</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td colspan="4">automatic_release</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td colspan="4">ip_src_violation_limit</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td colspan="4">tun_setup_script</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td colspan="4">tun_ifname</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td rowspan="29">erabs</td>
+<td colspan="3">priority_level</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td colspan="3">pre_emption_capability</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td colspan="3">pre_emption_vulnerability</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td colspan="3">setup_type</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td rowspan="4">gbr</td>
+<td colspan="2">maximum_bitrate_dl</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td colspan="2">maximum_bitrate_ul</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td colspan="2">guaranteed_bitrate_dl</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td colspan="2">guarantee_bitrate_ul</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td rowspan="14">filters</td>
+<td colspan="2">direction</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td colspan="2">id</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td colspan="2">precedence</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td rowspan="11">components</td>
+<td>ipv4_remote_addr</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>ipv6_remote_addr</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>proto_id</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>local_port</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>local_port_range</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>remote_port</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>remote_port_range</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>security_parameter_index</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>type_of_service</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>mask</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>flow_label</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td colspan="3">on_demand_timeout</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td colspan="3">on_demand_ul_trigger</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td colspan="3">transaction_identifier</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td colspan="3">llc_sapi</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td colspan="3">radio_priority</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td colspan="3">packet_flow_identifier</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td colspan="3">sm_qos</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="pcrf-rx">
+<h3><a class="toc-backref" href="#id25">Параметры PCRF (интерфейс Rx)</a><a class="headerlink" href="#pcrf-rx" title="Ссылка на этот заголовок">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="4%" />
+<col width="22%" />
+<col width="27%" />
+<col width="48%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head" colspan="3">Параметр</th>
+<th class="head">Описание</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td rowspan="11">rx</td>
+<td colspan="2">bind_addr</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td colspan="2">qci</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td colspan="2">origin_realm</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td colspan="2">origin_host</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td rowspan="3">reservation_priority</td>
+<td>priority_level</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>pre_emption_capability</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>pre_emption_vulnerability</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td rowspan="4">emergency</td>
+<td>qci</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>priority_level</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>pre_emption_capability</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>pre_emption_vulnerability</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="hss">
+<h3><a class="toc-backref" href="#id26">Параметры HSS</a><a class="headerlink" href="#hss" title="Ссылка на этот заголовок">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="16%" />
+<col width="10%" />
+<col width="19%" />
+<col width="55%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head" colspan="3">Параметр</th>
+<th class="head">Описание</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td rowspan="28">ue_db</td>
+<td colspan="2">imsi</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td colspan="2">msisdn</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td colspan="2">sim_algo</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td colspan="2">sqn</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td colspan="2">K</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td colspan="2">op</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td colspan="2">opc</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td colspan="2">r</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td colspan="2">c</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td colspan="2">top</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td colspan="2">topc</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td colspan="2">keccak_iter</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td colspan="2">amf</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td colspan="2">res_len</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td colspan="2">multi_sim</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td colspan="2">ue_aggregate_max_bitrate_dl</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td colspan="2">ue_aggregate_max_bitrate_ul</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td colspan="2">t3412</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td colspan="2">count</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td rowspan="9">pdn_list</td>
+<td>access_point_name</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>default</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>pdn_type</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>ipv4_addr</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>ipv6_prefix</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>imei</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>multicast</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>broadcast</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>routes</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td colspan="3">ue_db_filename</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="eir-s13">
+<h3><a class="toc-backref" href="#id27">Параметры EIR (S13)</a><a class="headerlink" href="#eir-s13" title="Ссылка на этот заголовок">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="8%" />
+<col width="25%" />
+<col width="67%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head" colspan="2">Параметр</th>
+<th class="head">Описание</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td rowspan="4">me_db</td>
+<td>default_status</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>whitelist</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>blacklist</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>greylist</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td rowspan="6">s13</td>
+<td>server_addr</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>bind_addr</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>origin_realm</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>origin_host</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>transaction_timeout</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>watchdog_duration</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="etws-cmas">
+<h3><a class="toc-backref" href="#id28">Параметры ETWS/CMAS</a><a class="headerlink" href="#etws-cmas" title="Ссылка на этот заголовок">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="10%" />
+<col width="19%" />
+<col width="14%" />
+<col width="9%" />
+<col width="48%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head" colspan="4">Параметр</th>
+<th class="head">Описание</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td rowspan="15">pws_msgs</td>
+<td colspan="3">local_identifier</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td colspan="3">message_identifier</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td colspan="3">serial_number</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td colspan="3">repetition_period</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td colspan="3">number_of_broadcasts_requested</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td colspan="3">warning_type</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td colspan="3">warning_security_info</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td colspan="3">warning_message</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td colspan="3">data_coding_scheme</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td colspan="3">concurrent_warning_message_ind</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td rowspan="5">warning_area_list</td>
+<td rowspan="2">cell_id_list</td>
+<td>plmn</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>cell_id</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td rowspan="2">tai_list</td>
+<td>plmn</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>tac</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td colspan="2">emergency_area_id_list</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="ltemme">
+<h2><a class="toc-backref" href="#id29">Удалённое управление программой ltemme</a><a class="headerlink" href="#ltemme" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Remote API на основе WebSocket.</p>
+</div>
+<div class="section" id="edrf-psm">
+<h2><a class="toc-backref" href="#id30">Функции управления параметрами eDRF и PSM</a><a class="headerlink" href="#edrf-psm" title="Ссылка на этот заголовок">¶</a></h2>
+<div class="section" id="new-radio-nr">
+<h3><a class="toc-backref" href="#id31">Относящиеся к New Radio (NR)</a><a class="headerlink" href="#new-radio-nr" title="Ссылка на этот заголовок">¶</a></h3>
+</div>
+<div class="section" id="cellular-iot-ciot">
+<h3><a class="toc-backref" href="#id32">Относящиеся к Cellular IoT (CIoT)</a><a class="headerlink" href="#cellular-iot-ciot" title="Ссылка на этот заголовок">¶</a></h3>
+</div>
+</div>
+<div class="section" id="pdn-apn">
+<h2><a class="toc-backref" href="#id33">Управление доступом к PDN и APN</a><a class="headerlink" href="#pdn-apn" title="Ссылка на этот заголовок">¶</a></h2>
+<div class="section" id="id5">
+<h3><a class="toc-backref" href="#id34">Разрешение/запрет доступа</a><a class="headerlink" href="#id5" title="Ссылка на этот заголовок">¶</a></h3>
+</div>
+<div class="section" id="ip">
+<h3><a class="toc-backref" href="#id35">Управление IP-адресацией</a><a class="headerlink" href="#ip" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Адреса для UE, адрес шлюза, адрес DNS, адрес элементов IMS.</p>
+</div>
+<div class="section" id="id6">
+<h3><a class="toc-backref" href="#id36">Управление аутентификацией</a><a class="headerlink" href="#id6" title="Ссылка на этот заголовок">¶</a></h3>
+</div>
+<div class="section" id="qos">
+<h3><a class="toc-backref" href="#id37">Управление QOS</a><a class="headerlink" href="#qos" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Создание/удаление default/dedicated bearer.
+Ограничение скорости передачи</p>
+</div>
+</div>
+<div class="section" id="id7">
+<h2><a class="toc-backref" href="#id38">Элементы</a><a class="headerlink" href="#id7" title="Ссылка на этот заголовок">¶</a></h2>
+<p>MME взаимодействует со следующими элементами</p>
+<div class="section" id="lte">
+<h3><a class="toc-backref" href="#id39">Из LTE</a><a class="headerlink" href="#lte" title="Ссылка на этот заголовок">¶</a></h3>
+<p>UE
+eNB
+S-GW
+MSC-сервером/VLR
+HSS</p>
+</div>
+<div class="section" id="id8">
+<h3><a class="toc-backref" href="#id40">Не из LTE</a><a class="headerlink" href="#id8" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Сервером лицензирования Amarisoft (для гибких [float] лицензий).
+Сервером дял удалённого управления WebSocket.</p>
+</div>
+</div>
+<div class="section" id="id9">
+<h2><a class="toc-backref" href="#id41">Интерфейсы</a><a class="headerlink" href="#id9" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Про протоколы, используемые в интерфейсах, подробнее на странице «Протоколы».</p>
+<p>MME имеет следующие интерфейсы:</p>
+<div class="section" id="ue-mme">
+<h3><a class="toc-backref" href="#id42">UE — MME</a><a class="headerlink" href="#ue-mme" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Для передачи информации по этому интерфейсу используется протокол NAS.</p>
+<div class="figure align-center" id="id11">
+<a class="reference internal image-reference" href="_images/NAS.png"><img alt="NAS" src="_images/NAS.png" style="width: 700.0px; height: 296.0px;" /></a>
+<p class="caption"><span class="caption-text">Стек протоколов интерфейса UE — MME</span></p>
+</div>
+</div>
+<div class="section" id="s1-mme-enb-mme">
+<h3><a class="toc-backref" href="#id43">S1-MME (eNB — MME)</a><a class="headerlink" href="#s1-mme-enb-mme" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Для передачи информации по этому интерфейсу используется протокол S1-AP.</p>
+<div class="figure align-center" id="id12">
+<a class="reference internal image-reference" href="_images/S1-MME.png"><img alt="S1-MME" src="_images/S1-MME.png" style="width: 405.0px; height: 253.0px;" /></a>
+<p class="caption"><span class="caption-text">Стек протоколов интерфейса S1-MME</span></p>
+</div>
+</div>
+<div class="section" id="s11-s-gw-mme">
+<h3><a class="toc-backref" href="#id44">S11 (S-GW — MME)</a><a class="headerlink" href="#s11-s-gw-mme" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Для передачи информации по этому интерфейсу используется протокол GTPv2-C.</p>
+<div class="figure align-center" id="id13">
+<a class="reference internal image-reference" href="_images/S11.png"><img alt="S11" src="_images/S11.png" style="width: 362.0px; height: 249.0px;" /></a>
+<p class="caption"><span class="caption-text">Стек протоколов интерфейса S11</span></p>
+</div>
+</div>
+<div class="section" id="sgs-msc-server-vlr-mme">
+<h3><a class="toc-backref" href="#id45">SGs (MSC-Server/VLR — MME)</a><a class="headerlink" href="#sgs-msc-server-vlr-mme" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Для передачи информации по этому интерфейсу используется протокол SGsAP.</p>
+<div class="figure align-center" id="id14">
+<a class="reference internal image-reference" href="_images/SGs.png"><img alt="SGs" src="_images/SGs.png" style="width: 300.0px; height: 203.0px;" /></a>
+<p class="caption"><span class="caption-text">Стек протоколов интерфейса SGs</span></p>
+</div>
+</div>
+<div class="section" id="s6a-hss-mme">
+<h3><a class="toc-backref" href="#id46">S6a (HSS — MME)</a><a class="headerlink" href="#s6a-hss-mme" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Для передачи информации по этому интерфейсу используется протокол Diameter.</p>
+<div class="figure align-center" id="id15">
+<a class="reference internal image-reference" href="_images/S6a.png"><img alt="S6a" src="_images/S6a.png" style="width: 404.0px; height: 263.0px;" /></a>
+<p class="caption"><span class="caption-text">Стек протоколов интерфейса S6a</span></p>
+</div>
+</div>
+</div>
+<div class="section" id="amarisoft">
+<h2><a class="toc-backref" href="#id47">Таймеры, используемые в amarisoft</a><a class="headerlink" href="#amarisoft" title="Ссылка на этот заголовок">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="32%" />
+<col width="49%" />
+<col width="18%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Обозначение таймера</th>
+<th class="head">Назначение таймера</th>
+<th class="head">Значение
+по умолчанию</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>t3402</td>
+<td>Значение таймера T3402 (в секундах).
+Значение -1 (по умолчанию) означает,
+что значение таймера не передаётся
+в attach accept или TAU accept,
+поэтому UE использует своё значение
+по умолчанию (12 минут).</td>
+<td>-1</td>
+</tr>
+<tr class="row-odd"><td>t3412</td>
+<td>Значение в секундах таймера T3412
+(TAU update). Значение -1 означает,
+что таймер выключен. Его значение
+отправляется на UE по протоколу NAS
+до тех пор, пока UE не запрашивает
+использование более долгого времени
+ожидания (T3412 extended value
+information element).</td>
+<td>1800</td>
+</tr>
+<tr class="row-even"><td>t3412_low_priority</td>
+<td>Значение в секундах таймера T3412
+(TAU update); используется, если UE
+указывает низкий приоритет
+NAS-сигнализации. Значение -1
+означает, что таймер выключен. Его
+значение передаётся на UE, пока UE
+не запрашивает использование более
+долгого времени ожидания (T3412
+extended value information element).</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>t3412_extended_forced</td>
+<td>Значение в секундах таймера
+T3412_extended, если UE использует
+PSM. Если оно не равно -1, MME
+проигнорирует запрошенное UE
+значение и отправит вместо него вот
+это.</td>
+<td>-1</td>
+</tr>
+<tr class="row-even"><td>force_t3412_extended_ie</td>
+<td><p class="first">Если false, то MME выбирает
+наибольшее значение T3412
+из установленного в MME
+и запрошенного UE для PSM (пока
+не установлено t3412_extended
+_forced) и не отправляет T3412
+_extended_ie, если значение может
+быть закодировано как GPRS timer IE.</p>
+<p class="last">Если true, то MME принимает
+запрошенное UE значение T3412
+меньшим, чем установленное
+в настройках, и всегда отправляет
+T3421_extended_IE.</p>
+</td>
+<td>false</td>
+</tr>
+<tr class="row-odd"><td>t3324_forced</td>
+<td>Значение таймера T3324 (в секундах),
+если UE использует PSM. Если
+отличается от -1, то MME
+проигнорирует запрошенное UE
+значение и отправит вместо него
+установленное в этом параметре.</td>
+<td>-1</td>
+</tr>
+<tr class="row-even"><td>t3346</td>
+<td>Значение таймера T3346 (в секундах).
+Передаётся в сообщении reject, если
+причина EMM — #22 (перегрузка,
+congestion) и значение не -1.</td>
+<td>-1</td>
+</tr>
+<tr class="row-odd"><td>t3448</td>
+<td>Значение таймера T3448 (в секундах).
+Передаётся, если значение не -1 и UE
+указывает на поддержку таймера в UE
+network capability information
+element.</td>
+<td>-1</td>
+</tr>
+<tr class="row-even"><td>t3460</td>
+<td>Значение таймера T3460 (в секундах).</td>
+<td>6</td>
+</tr>
+<tr class="row-odd"><td>t3460_wb_s1_ce</td>
+<td>Значение таймера T3460 (в секундах)
+для UE, работающих в режиме
+WB-S1/CE.</td>
+<td>24</td>
+</tr>
+<tr class="row-even"><td>t3396</td>
+<td>Значение таймера T3396 (в секундах).
+Таймер передаётся в сообщениях ESM
+reject, если значение не -1.</td>
+<td>-1</td>
+</tr>
+</tbody>
+</table>
+<p>Про таймеры, определённые 3GPP, подробнее на странице «Таймеры».</p>
+</div>
+<div class="section" id="id10">
+<h2><a class="toc-backref" href="#id48">Идентификаторы</a><a class="headerlink" href="#id10" title="Ссылка на этот заголовок">¶</a></h2>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="ims.html" class="btn btn-neutral float-right" title="ims.cfg" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="enb.html" class="btn btn-neutral float-left" title="enb.сfg" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Timofey Gribanov
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
